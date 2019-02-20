@@ -16,18 +16,16 @@ if [ ! -f "$DIRNAME/$ARCHIVENAME/$FILENAME$EXTENSION" ]
 then cp $FILE "$DIRNAME/$ARCHIVENAME/"
 else 
 i=1
-while [ -f "$DIRNAME/$ARCHIVENAME/$FILENAME$i$EXTENSION" ]
+while [ -f "$DIRNAME/$ARCHIVENAME/$FILENAME($i)$EXTENSION" ]
 do
 i=$((i+1))
 done
-cp $FILE "$DIRNAME/$ARCHIVENAME/$FILENAME$i$EXTENSION"
-
+cp $FILE "$DIRNAME/$ARCHIVENAME/$FILENAME($i)$EXTENSION"
 fi
 done
+
 shift
 done
 tar -cf "$DIRNAME/$ARCHIVENAME.tar" -P --absolute-names "$DIRNAME/$ARCHIVENAME/"
 rm -r "$DIRNAME/$ARCHIVENAME/"
 echo "done"
-
-
